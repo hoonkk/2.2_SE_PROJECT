@@ -1,0 +1,9 @@
+
+헤더파일을 
+
+sum.h를 만듬
+근데 sum.h에서 stdio.h.를 쓰고싶으면
+#ifndef __SUM_H__
+#define __SUM_H__
+
+#endif
