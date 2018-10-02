@@ -1,8 +1,7 @@
 #include <conio.h>
-#include "getKey.h"
+#include "getkey.h"
 
 int getKey()
 {
 	return _getch();
-
 }

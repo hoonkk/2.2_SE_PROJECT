@@ -1,5 +1,5 @@
 #ifndef __KEYSETTING_H__
-int keySetting();
+void keySetting();
 #define __KEYSETTING_H__
 
 #endif

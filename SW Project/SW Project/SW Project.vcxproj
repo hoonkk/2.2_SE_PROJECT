@@ -139,13 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="getKey.c" />
-    <ClCompile Include="keySetting.c" />
+    <ClCompile Include="cursortype.c" />
+    <ClCompile Include="getkey.c" />
+    <ClCompile Include="keysetting.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="getKey.h" />
-    <ClInclude Include="keySetting.h" />
+    <ClInclude Include="console.h" />
+    <ClInclude Include="getkey.h" />
+    <ClInclude Include="keysetting.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
