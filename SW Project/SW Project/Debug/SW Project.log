@@ -1,3 +1,2 @@
-﻿  main.c
-c:\users\kkkkk\desktop\gitdocument\2.2_sw_project\sw project\sw project\main.c(17): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+﻿  getkey.c
   SW Project.vcxproj -> C:\Users\kkkkk\Desktop\GitDocument\2.2_SW_PROJECT\SW Project\Debug\SW Project.exe

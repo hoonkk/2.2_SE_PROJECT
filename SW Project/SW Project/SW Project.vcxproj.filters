@@ -18,21 +18,15 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="keysetting.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="getkey.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="cursortype.c">
+    <ClCompile Include="console.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="keysetting.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="getkey.h">
