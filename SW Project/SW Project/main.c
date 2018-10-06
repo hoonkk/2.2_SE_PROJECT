@@ -25,8 +25,9 @@ void main()
 				if (firstSet == 0) // 키 설정을 하지 않고 게임에 들어가는 경우
 				{
 					printf("키 설정을 하지 않으셨네요\n");
+					break;
 				}
-
+				printf("키셋팅 완료. 게임으로 넘어갑니다");
 				break;
 			
 			}
@@ -34,9 +35,8 @@ void main()
 			case 2:
 			{
 				keySetting(chungUp, chungDown, baekUp, baekDown);
-				getchar();
-				/*printf("%d", chungUp);
-				getchar();*/
+				firstSet++;
+				break;
 			}
 		}
 		
