@@ -1,6 +1,6 @@
 #ifndef __GETKEY_H__
 int getKey();
-void keySetting();
+int keySetting();
 #define __GETKEY_H__
 
 #endif
