@@ -1,4 +1,6 @@
 #include <Windows.h>
+#include <stdio.h>
+#include <conio.h>
 #include "console.h"
 void cursorType(CURSOR_TYPE c) 
 {
@@ -19,3 +21,18 @@ void cursorType(CURSOR_TYPE c)
 	}
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CurInfo);
 }
+
+
+int getKey()
+{
+	return _getch();
+}
+
+int keySetting() //  두번째 바이트는 버리는 숫자입력
+{
+	int key;
+	key = getKey();
+	getKey();
+	return key;
+}
+
