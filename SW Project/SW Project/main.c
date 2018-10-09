@@ -12,7 +12,6 @@ void main()
 	cursorType(NOCURSOR); // 커서 안깜빡이게 설정
 	int firstSet = 0; // 초기 키 설정을 안하고 게임으로 넘어가는 것을 막기위한 변수 선언
 	int menu=0;
-	int blueUp =0, blueDown = 0, whiteUp = 0, whiteDown = 0;
 	while (1) // 기본 메뉴 출력
 	{
 		
@@ -40,15 +39,7 @@ void main()
 			////키 설정////
 			case 2:
 			{
-				printf("키셋팅을 시작합니다.\n청기를 올리는 버튼을 입력해주세요::\n");
-				blueUp = keySetting();
-				printf("입력하신 키는 "); putchar(blueUp); printf(" 입니다");
-				printf("청기를 내리는 버튼을 입력해주세요::\n");
-				blueDown = keysSetting();
-				printf("백기를 올리는 버튼을 입력해주세요::\n");
-				whiteUp = keySetting();
-				printf("백기를 내리는 버튼을 입력해주세요::\n");
-				whiteDown = keySetting();
+				userKeySetting();
 				firstSet++;
 				break;
 			}
