@@ -4,11 +4,13 @@
 #include <stdio.h>
 #include <conio.h>
 #include <Windows.h>
+#include <stdbool.h>
 #include "console.h"
 #include "gamestart.h"
 //a -> 위 화살표 , b -> 아래 화살표, c -> 왼쪽 화살표, d- > 오른쪽 화살표
 void main()
 {
+	system("title BlueFlagWhiteFlagGame");
 	cursorType(NOCURSOR); // 커서 안깜빡이게 설정
 	int firstSet = 0; // 초기 키 설정을 안하고 게임으로 넘어가는 것을 막기위한 변수 선언
 	int menu=0;
@@ -28,11 +30,8 @@ void main()
 					break;
 				}
 				printf("키셋팅 완료. 게임으로 넘어가려면 엔터를 누르세요.\n");
-				getchar();
 				system("cls");
 				gameStart();
-				
-
 				break;
 			
 			}
@@ -46,7 +45,8 @@ void main()
 			////랭크////
 			case 3:
 			{
-
+				int a = keySetting();
+				printf("%d", a);
 			}
 			case 4:
 			{
