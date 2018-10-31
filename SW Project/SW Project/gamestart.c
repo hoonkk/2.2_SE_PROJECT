@@ -87,7 +87,7 @@ void gameStart()
 		Sleep(1000);
 		system("cls");
 		if (gameaccount == 10)
-			printf("¿ì¿Õ ³¡³µ´Ù~~");
+			printf("exit");
 	} 
 	getchar();
 }
