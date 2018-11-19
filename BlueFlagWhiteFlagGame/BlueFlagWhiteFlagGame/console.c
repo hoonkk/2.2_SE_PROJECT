@@ -3,6 +3,15 @@
 #include <conio.h>
 #include "console.h"
 
+void gotoxy(int x, int y)
+{
+	COORD Pos = { x , y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+}
+void textcolor(int color_number)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color_number);
+}
 void cursorType(CURSOR_TYPE c)
 {
 	CONSOLE_CURSOR_INFO CurInfo;

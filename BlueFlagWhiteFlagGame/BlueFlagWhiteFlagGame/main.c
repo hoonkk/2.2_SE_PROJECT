@@ -1,6 +1,5 @@
 //10.1 console 헤더 (콘솔창에서 커서 안 깜빡거리게 하기) 추가
 
-
 #include <stdio.h>
 #include <conio.h>
 #include <Windows.h>
@@ -10,8 +9,10 @@
 //a -> 위 화살표 , b -> 아래 화살표, c -> 왼쪽 화살표, d- > 오른쪽 화살표
 void main()
 {
-	system("title BlueFlagWhiteFlagGame");
+	system("title BlueFlagWhiteFlagGame"); // 콘솔 이름 설정
+	system("mode con cols=70 lines=30"); // 콘솔 창 크기 설정
 	cursorType(NOCURSOR); // 커서 안깜빡이게 설정
+
 	int firstSet = 0; // 초기 키 설정을 안하고 게임으로 넘어가는 것을 막기위한 변수 선언
 	int menu = 0;
 	while (1) // 기본 메뉴 출력
