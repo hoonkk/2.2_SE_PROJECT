@@ -16,6 +16,7 @@ void printBlank(int num);
 void moveFlag(int flagSwitch);
 void clearFlag();
 void pause();
+
 struct _inputKey {
 	int blueUp;
 	int blueDown;
@@ -31,7 +32,6 @@ struct _stageStatus {
 	char *_frontQuestion[1];
 	char *_backQuestion[1];
 	char *_blueOrWhite[2];
-
 } stageStatus;
 
 #define DEFAULT 0

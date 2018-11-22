@@ -113,7 +113,7 @@ void gameStart()
 		}
 		else
 		{
-			printf("M  I  S  S!\n");
+			printf("M  I  S  S!\n"); //엔터 말고 다른 것을 누른 경우.
 			printCharactor(SAD);
 			stageStatus.life--;
 		}
@@ -131,10 +131,7 @@ void gameStart()
 			gotoxy(21, 18); printf("━"); gotoxy(22, 18); printf("━"); gotoxy(23, 18); printf("━");
 			gotoxy(25, 18); printf("┓"); gotoxy(25, 19); printf("┃"); gotoxy(25, 20); printf("┛"); gotoxy(24, 20); printf("━");
 			gotoxy(22, 19); scanf_s("%3s", a, FILE_BUFFER);
-			
-			
-			
-			fopen_s(&fp,"data\\exampledata.txt", "a");
+			fopen_s(&fp,"data\\gamedata.txt", "a");
 			fprintf(fp, "%s  %.2f ^" , a , stageStatus.time/1000);
 			fclose(fp);
 			pause(); system("cls");
@@ -147,7 +144,6 @@ void gameStart()
 		stageStatus.stage++; // 스테이지 증가
 		pause();
 		system("cls");
-
 	}
 	getchar();
 }
