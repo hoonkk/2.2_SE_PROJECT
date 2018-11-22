@@ -9,6 +9,13 @@ void gotoxy(int x, int y);
 void textcolor(int color_number);
 void initialShow();
 void updateShow();
+void printMenu();
+void printCharactor(int emotion);
+void printDot(int number);
+void printBlank(int num);
+void moveFlag(int flagSwitch);
+void clearFlag();
+void pause();
 struct _inputKey {
 	int blueUp;
 	int blueDown;
@@ -20,11 +27,16 @@ struct _stageStatus {
 	int stage;
 	int score;
 	int life;
+	double time;
 	char *_frontQuestion[1];
 	char *_backQuestion[1];
 	char *_blueOrWhite[2];
 
 } stageStatus;
+
+#define DEFAULT 0
+#define HAPPY 1
+#define SAD 2
 
 #define __CONSOLE_H__
 
