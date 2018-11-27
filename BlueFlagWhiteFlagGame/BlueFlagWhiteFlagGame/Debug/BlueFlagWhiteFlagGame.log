@@ -1,2 +1,14 @@
 ﻿  rangking.c
+c:\users\kkkkk\desktop\gitdocument\2.2_se_project\blueflagwhiteflaggame\blueflagwhiteflaggame\rangking.c(30): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 'strtok' 선언을 참조하십시오.
+c:\users\kkkkk\desktop\gitdocument\2.2_se_project\blueflagwhiteflaggame\blueflagwhiteflaggame\rangking.c(34): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 'strcpy' 선언을 참조하십시오.
+c:\users\kkkkk\desktop\gitdocument\2.2_se_project\blueflagwhiteflaggame\blueflagwhiteflaggame\rangking.c(35): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 'strtok' 선언을 참조하십시오.
+c:\users\kkkkk\desktop\gitdocument\2.2_se_project\blueflagwhiteflaggame\blueflagwhiteflaggame\rangking.c(43): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 'strtok' 선언을 참조하십시오.
+c:\users\kkkkk\desktop\gitdocument\2.2_se_project\blueflagwhiteflaggame\blueflagwhiteflaggame\rangking.c(44): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: 'strcpy' 선언을 참조하십시오.
+c:\users\kkkkk\desktop\gitdocument\2.2_se_project\blueflagwhiteflaggame\blueflagwhiteflaggame\rangking.c(45): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(440): note: 'strtok' 선언을 참조하십시오.
   BlueFlagWhiteFlagGame.vcxproj -> C:\Users\kkkkk\Desktop\GitDocument\2.2_SE_PROJECT\BlueFlagWhiteFlagGame\Debug\BlueFlagWhiteFlagGame.exe

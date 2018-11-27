@@ -132,7 +132,7 @@ void gameStart()
 			gotoxy(25, 18); printf("¦¯"); gotoxy(25, 19); printf("¦­"); gotoxy(25, 20); printf("¦°"); gotoxy(24, 20); printf("¦¬");
 			gotoxy(22, 19); scanf_s("%3s", a, FILE_BUFFER);
 			fopen_s(&fp,"data\\gamedata.txt", "a");
-			fprintf(fp, "%s  %.2f ^" , a , stageStatus.time/1000);
+			fprintf(fp, "%s %.2f^" , a , stageStatus.time/1000);
 			fclose(fp);
 			pause(); system("cls");
 			break;
