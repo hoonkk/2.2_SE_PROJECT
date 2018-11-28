@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "console.h"
 #include "gamestart.h"
-#include "rangking.h"
+#include "ranking.h"
 
 
 void main()
@@ -28,7 +28,9 @@ void main()
 			system("cls");
 			if (firstSet == 0) // 키 설정을 하지 않고 게임에 들어가는 경우
 			{
-				printf("키 설정을 하지 않으셨네요\n");
+				settingWarning();
+				pause();
+				system("cls");
 				break;
 			}
 			gotoxy(12, 15);
@@ -37,7 +39,6 @@ void main()
 			system("cls");
 			gameStart();
 			break;
-
 		}
 		////키 설정////
 		case 2:
@@ -51,7 +52,7 @@ void main()
 		case 3:
 		{
 			system("cls");
-			showRangking();
+			showRanking();
 			break;
 		}
 		case 4:
@@ -59,6 +60,20 @@ void main()
 			printf("게임을 종료합니다");
 			exit(1);
 		}
+		case 5: // 아스키코드 체크용
+		{
+			
+			while (1) {
+				system("cls");
+				gotoxy(30, 15);
+				char a = keySetting();
+				printf("%d  %c", a, a);
+
+				pause();
+			}
+		}
+	
+	
 		}
 
 	}

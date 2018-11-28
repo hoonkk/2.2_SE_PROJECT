@@ -142,12 +142,12 @@
     <ClCompile Include="console.c" />
     <ClCompile Include="gamestart.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="rangking.c" />
+    <ClCompile Include="ranking.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h" />
     <ClInclude Include="gamestart.h" />
-    <ClInclude Include="rangking.h" />
+    <ClInclude Include="ranking.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

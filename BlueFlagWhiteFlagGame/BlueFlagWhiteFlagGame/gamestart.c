@@ -13,8 +13,6 @@
 #define DO_NOT_DOWN 3
 #define BLUEFLAG 0
 #define WHITEFLAG 1
-#define TRUE 1
-#define FALSE 0
 #define ENTER 13
 #define QUESTION_BUFFER 50
 #define LIFE 10
@@ -77,7 +75,6 @@ void gameStart()
 		updateShow(); // 문제 출력
 		/* 여기서 부터 시간을 잽니다 */
 		startTimer = clock();
-
 		if (upDownFront != DO_NOT_UP && upDownFront != DO_NOT_DOWN) // 문제 전문 앞의 문자가 올리거나, 내리는 경우에만 사용자 INPUT을 받음
 				userInputFront = keySetting(); // 사용자의 input(전문)을 받는다
 		moveFlag(userInputFront);
@@ -117,6 +114,7 @@ void gameStart()
 			printCharactor(SAD);
 			stageStatus.life--;
 		}
+
 		endTimer = clock();
 		stageStatus.time += (endTimer - startTimer);
 		if (stageStatus.life == 0)

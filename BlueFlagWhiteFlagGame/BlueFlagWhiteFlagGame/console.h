@@ -1,4 +1,5 @@
 #ifndef __CONSOLE_H__
+#include <stdbool.h>
 
 typedef enum { NOCURSOR, SOLIDCURSOR, NORMALCURSOR } CURSOR_TYPE;
 void cursorType(CURSOR_TYPE c);
@@ -16,7 +17,9 @@ void printBlank(int num);
 void moveFlag(int flagSwitch);
 void clearFlag();
 void pause();
-
+void settingWarning();
+void printKeyboard();
+bool keyUseable(int inputKey);
 struct _inputKey {
 	int blueUp;
 	int blueDown;
@@ -37,6 +40,8 @@ struct _stageStatus {
 #define DEFAULT 0
 #define HAPPY 1
 #define SAD 2
+#define TRUE 1
+#define FALSE 0
 
 #define __CONSOLE_H__
 

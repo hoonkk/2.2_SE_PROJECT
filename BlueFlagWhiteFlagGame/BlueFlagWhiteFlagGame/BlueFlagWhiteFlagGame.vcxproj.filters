@@ -24,7 +24,7 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="rangking.c">
+    <ClCompile Include="ranking.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="gamestart.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="rangking.h">
+    <ClInclude Include="ranking.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
