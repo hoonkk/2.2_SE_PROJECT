@@ -13,7 +13,7 @@
 #define DO_NOT_DOWN 3
 #define BLUEFLAG 0
 #define WHITEFLAG 1
-#define ENTER 13
+
 #define QUESTION_BUFFER 50
 #define LIFE 10
 #define FILE_BUFFER 100
@@ -40,8 +40,7 @@ void gameStart()
 	stageStatus._blueOrWhite[0] = "";
 	stageStatus._blueOrWhite[1] = "";
 	gotoxy(22, 15);
-	printf("게임을  시작합니다 . . . !");
-	pause();
+	gameIntro();
 	while (1)
 	{
 		uncorrectAnswer= 0, userInputFront = 0, userInputBack = 0;
@@ -91,30 +90,27 @@ void gameStart()
 				if (answerCheck(blueWhiteBack, upDownBack, userInputBack) == FALSE)
 					uncorrectAnswer++;
 			}
-		int isThatRight = keySetting(); // 그 답이 맞다면 엔터를 누르게끔 한다.
-		gotoxy(28, 12);
-		if (isThatRight == ENTER)
+		while (1)
 		{
-			if (uncorrectAnswer == 0)
+			int isThatRight = keySetting(); // 그 답이 맞다면 엔터를 누르게끔 한다.
+			gotoxy(28, 12);
+			if (isThatRight == SPACEBAR)
 			{
-				printf("G  O  O  D  ♬\n");
-				printCharactor(HAPPY);
-				stageStatus.score += 50;
-			}// 정답인경우
-			else
-			{
-				printf("M  I  S  S !\n"); // 오답인경우
-				printCharactor(SAD);
-				stageStatus.life--;
+				if (uncorrectAnswer == 0)
+				{
+					printf("G  O  O  D  ♬\n");
+					printCharactor(HAPPY);
+					stageStatus.score += 50;
+				}// 정답인경우
+				else
+				{
+					printf("M  I  S  S !\n"); // 오답인경우
+					printCharactor(SAD);
+					stageStatus.life--;
+				}
+				break;
 			}
 		}
-		else
-		{
-			printf("M  I  S  S!\n"); //엔터 말고 다른 것을 누른 경우.
-			printCharactor(SAD);
-			stageStatus.life--;
-		}
-
 		endTimer = clock();
 		stageStatus.time += (endTimer - startTimer);
 		if (stageStatus.life == 0)

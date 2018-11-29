@@ -15,11 +15,12 @@ void main()
 
 	int firstSet = 0; // 초기 키 설정을 안하고 게임으로 넘어가는 것을 막기위한 변수 선언
 	int menu = 0;
+	
 	while (1) // 기본 메뉴 출력
 	{
-
 		printMenu();
-		scanf_s("%d", &menu);
+		menu = choiceMenu(); 
+		printMenu();
 		switch (menu)
 		{
 			////게임 시작////
@@ -33,10 +34,6 @@ void main()
 				system("cls");
 				break;
 			}
-			gotoxy(12, 15);
-			printf("키셋팅 완료. 게임으로 넘어가려면 엔터를 누르세요.\n");
-			pause();
-			system("cls");
 			gameStart();
 			break;
 		}
@@ -55,25 +52,19 @@ void main()
 			showRanking();
 			break;
 		}
+		////게임종료////
 		case 4:
 		{
+			system("cls");
+			gotoxy(20, 15);
 			printf("게임을 종료합니다");
 			exit(1);
 		}
-		case 5: // 아스키코드 체크용
+		case 5:
 		{
 			
-			while (1) {
-				system("cls");
-				gotoxy(30, 15);
-				char a = keySetting();
-				printf("%d  %c", a, a);
-
-				pause();
-			}
 		}
-	
-	
+		
 		}
 
 	}

@@ -2,23 +2,35 @@
 #include <stdbool.h>
 
 typedef enum { NOCURSOR, SOLIDCURSOR, NORMALCURSOR } CURSOR_TYPE;
-void cursorType(CURSOR_TYPE c);
+
+
 int getKey();
+
 int keySetting();
+
 void userKeySetting();
+
 void gotoxy(int x, int y);
+void cursorType(CURSOR_TYPE c);
 void textcolor(int color_number);
+
 void initialShow();
 void updateShow();
-void printMenu();
 void printCharactor(int emotion);
 void printDot(int number);
 void printBlank(int num);
 void moveFlag(int flagSwitch);
 void clearFlag();
-void pause();
 void settingWarning();
 void printKeyboard();
+
+void gameIntro();
+void printMenu();
+int choiceMenu();
+
+void pause();
+
+
 bool keyUseable(int inputKey);
 struct _inputKey {
 	int blueUp;
@@ -42,6 +54,7 @@ struct _stageStatus {
 #define SAD 2
 #define TRUE 1
 #define FALSE 0
+#define SPACEBAR 32
 
 #define __CONSOLE_H__
 
