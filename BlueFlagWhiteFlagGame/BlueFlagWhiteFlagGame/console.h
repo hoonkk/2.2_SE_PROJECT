@@ -52,9 +52,19 @@ struct _stageStatus {
 #define DEFAULT 0
 #define HAPPY 1
 #define SAD 2
+
 #define TRUE 1
 #define FALSE 0
+
+#define ENTER 13
 #define SPACEBAR 32
+
+#define FONT_BLUE 1
+#define FONT_RED 4
+#define FONT_YELLOW 6
+#define FONT_WHITE 7
+#define FONT_CYAN 3
+#define CYAN 11
 
 #define __CONSOLE_H__
 

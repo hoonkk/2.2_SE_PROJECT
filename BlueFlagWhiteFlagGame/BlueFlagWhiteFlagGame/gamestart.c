@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <conio.h>
 #include <stdlib.h> 
 #include <time.h> // rand함수 사용, clock()을 위한 헤더
 #include <stdbool.h> // boolean형 함수 선언을 위한 헤더
@@ -27,7 +28,6 @@ void gameStart()
 	int blueWhiteFront, blueWhiteBack; // 청기, 백기의 문제 앞, 뒷순위를 결정.
 	int userInputFront = 0, userInputBack = 0; // 사용자가 입력한 값 비교
 	int uncorrectAnswer; //오답처리
-	stageStatus.score = 0;
 	stageStatus.time = 0;
 	stageStatus.stage = 1;
 	stageStatus.life = 1; //임시로 바꿈 테스팅을위해
@@ -74,72 +74,87 @@ void gameStart()
 		updateShow(); // 문제 출력
 		/* 여기서 부터 시간을 잽니다 */
 		startTimer = clock();
-		if (upDownFront != DO_NOT_UP && upDownFront != DO_NOT_DOWN) // 문제 전문 앞의 문자가 올리거나, 내리는 경우에만 사용자 INPUT을 받음
-				userInputFront = keySetting(); // 사용자의 input(전문)을 받는다
+
+		userInputFront = keySetting(); // 사용자의 input(전문)을 받는다
 		moveFlag(userInputFront);
-		if (upDownBack != DO_NOT_UP && upDownBack != DO_NOT_DOWN) // 문제 후문 앞의 문자가 올리거나, 내리는 경우에만 사용자 INPUT을 받음
-				userInputBack = keySetting(); // 사용자의 input(후문)을 받는다
+		userInputBack = keySetting(); // 사용자의 input(후문)을 받는다
 		moveFlag(userInputBack);
-		if (upDownFront != DO_NOT_UP && upDownFront != DO_NOT_DOWN) // 앞 절의 문제가 있는 경우(올리거나, 내리는 경우)에만 채점
-			{
-				if (answerCheck(blueWhiteFront, upDownFront, userInputFront) == FALSE)
-					uncorrectAnswer++;
-			}
-		if (upDownBack != DO_NOT_UP && upDownBack != DO_NOT_DOWN) // 뒤 절의 문제가 있는 경우(올리거나, 내리는 경우)에만 채점
-			{
-				if (answerCheck(blueWhiteBack, upDownBack, userInputBack) == FALSE)
-					uncorrectAnswer++;
-			}
-		while (1)
+		if (answerCheck(blueWhiteFront, upDownFront, userInputFront) == FALSE) 
 		{
-			int isThatRight = keySetting(); // 그 답이 맞다면 엔터를 누르게끔 한다.
-			gotoxy(28, 12);
-			if (isThatRight == SPACEBAR)
+			uncorrectAnswer++;
+		}
+		if (answerCheck(blueWhiteBack, upDownBack, userInputBack) == FALSE)
+		{
+			uncorrectAnswer++;
+		}
+		
+		gotoxy(28, 12);
+		printf("PRESS ENTER!");
+		pause();
+		if (uncorrectAnswer == 0)
+		{
+			gotoxy(28, 12); printf("G  O  O  D  ♬  ");
+			printCharactor(HAPPY);
+		}// 정답인경우
+		else
+		{
+			gotoxy(28, 12); printf("M  I  S  S !   "); // 오답인경우
+			printCharactor(SAD);
+			stageStatus.life--;
+		}
+		if (stageStatus.life == 0) // 게임오버
+		{
+			pause();
+			system("cls");
+			textcolor(FONT_RED);
+			for (int i = 0; i < 5; i++) // 깜빡이는 효과
 			{
-				if (uncorrectAnswer == 0)
-				{
-					printf("G  O  O  D  ♬\n");
-					printCharactor(HAPPY);
-					stageStatus.score += 50;
-				}// 정답인경우
-				else
-				{
-					printf("M  I  S  S !\n"); // 오답인경우
-					printCharactor(SAD);
-					stageStatus.life--;
-				}
-				break;
+				gotoxy(24, 15); printf("                       "); Sleep(150);
+				gotoxy(24, 15); printf("G  A  M  E  O  V  E  R "); Sleep(150);
 			}
+			textcolor(FONT_WHITE);
+			pause();
+			system("cls");
+			break;
 		}
 		endTimer = clock();
 		stageStatus.time += (endTimer - startTimer);
-		if (stageStatus.life == 0)
+		gotoxy(40, 30);
+		printf("현재까지 경과 시간 :: %.2f초", stageStatus.time / 1000);
+		stageStatus.stage++; // 스테이지 증가
+		if (stageStatus.stage == 2) // 클리어
 		{
 			char a[FILE_BUFFER] = "";
-
-			system("cls"); gotoxy(20, 15); printf("GAME OVER . . . ! "); pause(); system("cls");
-			gotoxy(20, 15); printf("총 STAGE : %d   총 걸린 시간 : %.2f초", stageStatus.stage, stageStatus.time/1000);
-			gotoxy(20, 17);printf("NAME?(3자까지만 인식하여 입력합니다.)");
-			gotoxy(20, 20); printf("┗"); gotoxy(21, 20); printf("━"); 
-			gotoxy(22, 20); printf("━"); gotoxy(20, 19); printf("┃"); gotoxy(20, 18); printf("┏");
-			gotoxy(21, 18); printf("━"); gotoxy(22, 18); printf("━"); gotoxy(23, 18); printf("━");
-			gotoxy(25, 18); printf("┓"); gotoxy(25, 19); printf("┃"); gotoxy(25, 20); printf("┛"); gotoxy(24, 20); printf("━");
-			gotoxy(22, 19); scanf_s("%3s", a, FILE_BUFFER);
-			fopen_s(&fp,"data\\gamedata.txt", "a");
-			fprintf(fp, "%s %.2f^" , a , stageStatus.time/1000);
+			pause();
+			system("cls"); 
+			printCharactor(HAPPY);
+			for (int i = 0; i < 5; i++) // 깜빡이는 효과
+			{
+				gotoxy(25, 10); printf("                   "); Sleep(100);
+				gotoxy(25, 10); printf("C  L  E  A  R  !  !"); Sleep(100);
+				gotoxy(25, 12); for (int a = 0; a <= i; a++) printf("★  ");
+				gotoxy(25, 8); for (int a = 0; a <= i; a++) printf("★  ");
+				Sleep(100);
+			}
+			
+			pause(); system("cls");
+			textcolor(FONT_YELLOW);
+			gotoxy(17, 10); printf("총 STAGE : %d   총 걸린 시간 : %.2f초", stageStatus.stage, stageStatus.time / 1000);
+			textcolor(FONT_CYAN);
+			gotoxy(10, 17); printf("랭킹에 등록할 이름을 입력하세요");
+			gotoxy(10, 18); printf("3자까지만 인식하여 입력되며, 알파벳 OR 숫자로 입력하세요");
+			gotoxy(10, 19); printf("=>  "); 
+			textcolor(FONT_WHITE); scanf_s("%3s", a, FILE_BUFFER);
+			textcolor(FONT_WHITE);
+			fopen_s(&fp, "data\\gamedata.txt", "a");
+			fprintf(fp, "%s %.2f^", a, stageStatus.time / 1000);
 			fclose(fp);
 			pause(); system("cls");
 			break;
 		}
-		gotoxy(20, 2);
-		printf("이번 스테이지에서 걸린 시간 :: %.2f초", (endTimer - startTimer)/1000);
-		gotoxy(20, 3);
-		printf("현재까지 경과 시간 :: %.2f초", stageStatus.time / 1000);
-		stageStatus.stage++; // 스테이지 증가
 		pause();
 		system("cls");
 	}
-	getchar();
 }
 bool answerCheck(int blueWhiteCheck, int upDownCheck, int userInputCheck) // 문제 채점
 {
@@ -150,6 +165,8 @@ bool answerCheck(int blueWhiteCheck, int upDownCheck, int userInputCheck) // 문�
 	else if (blueWhiteCheck == WHITEFLAG && upDownCheck == DO_UP && userInputCheck == inputKey.whiteUp)
 		return true;
 	else if (blueWhiteCheck == WHITEFLAG && upDownCheck == DO_DOWN && userInputCheck == inputKey.whiteDown)
+		return true;
+	else if ((upDownCheck == DO_NOT_UP || upDownCheck == DO_NOT_DOWN) && userInputCheck == SPACEBAR)
 		return true;
 	else return false;
 }

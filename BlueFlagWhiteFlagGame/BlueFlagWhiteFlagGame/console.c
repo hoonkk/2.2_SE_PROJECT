@@ -4,12 +4,7 @@
 
 #include "console.h"
 
-#define FONT_BLUE 1
-#define FONT_RED 4
-#define FONT_YELLOW 6
-#define FONT_WHITE 7
-#define FONT_CYAN 3
-#define CYAN 11
+
 
 #define WAIT 50
 
@@ -24,7 +19,7 @@ void pause()
 	while (1)
 	{
 		check = getKey();
-		if (check == SPACEBAR)
+		if (check == ENTER)
 		{
 			getKey();
 			break;
@@ -149,14 +144,14 @@ void printKeyboard()
 void gameIntro()
 {
 	textcolor(FONT_CYAN);
-	gotoxy(20, 15);
+	gotoxy(23, 15);
 	printf("G  "); Sleep(WAIT); printf("A  "); Sleep(WAIT); printf("M  "); Sleep(WAIT);
 	printf("E  "); Sleep(WAIT); printf("S  "); Sleep(WAIT); printf("T  "); Sleep(WAIT);
 	printf("A  "); Sleep(WAIT); printf("R  "); Sleep(WAIT); printf("T  "); Sleep(WAIT);
 	for (int i = 0; i < 5; i++) // 깜빡이는 효과
 	{
-		gotoxy(20, 15); printf("                         "); Sleep(WAIT + 50);
-		gotoxy(20, 15); printf("G  A  M  E  S  T  A  R  T"); Sleep(WAIT + 50);
+		gotoxy(23, 15); printf("                         "); Sleep(WAIT + 50);
+		gotoxy(23, 15); printf("G  A  M  E  S  T  A  R  T"); Sleep(WAIT + 50);
 	}
 	textcolor(FONT_WHITE);
 }
@@ -270,13 +265,12 @@ void initialShow()
 	gotoxy(5, 1);
 	printf("STAGE : %d", stageStatus.stage);
 	textcolor(FONT_RED);
-	gotoxy(30, 1);
+	gotoxy(50, 1);
 	printf("LIFE : ");
 	for (int i = 0;i < stageStatus.life;i++) printf("♥");
 	for (int i = 0;i < 5 - stageStatus.life;i++) printf("♡");
-	gotoxy(55, 1);
-	textcolor(FONT_YELLOW);
-	printf("SCORE : %d", stageStatus.score);
+	gotoxy(0, 2); textcolor(FONT_WHITE); 
+	for (int i = 0; i < 70; i++) printf("━");
 	textcolor(FONT_WHITE);
 	printCharactor(DEFAULT);
 }
@@ -286,15 +280,14 @@ void updateShow()
 	textcolor(FONT_YELLOW);
 	gotoxy(5, 1);
 	printf("STAGE : %d", stageStatus.stage);
-	gotoxy(30, 1);
+	gotoxy(50, 1);
 	textcolor(FONT_RED);
 	printf("LIFE : ");
 	for (int i = 0;i < stageStatus.life;i++) printf("♥");
 	for (int i = 0;i < 5 - stageStatus.life;i++) printf("♡");
-	gotoxy(55, 1);
-	textcolor(FONT_YELLOW);
-	printf("SCORE : %d", stageStatus.score);
-	textcolor(FONT_BLUE);
+	gotoxy(0, 2); textcolor(FONT_WHITE);
+	for (int i = 0; i < 70; i ++) printf("━");
+	textcolor(FONT_CYAN);
 	gotoxy(15, 5);
 	printf("청기↑ : %c", inputKey.blueUp);
 	gotoxy(15, 6);
@@ -303,10 +296,11 @@ void updateShow()
 	gotoxy(40, 5);
 	printf("백기↑ : %c", inputKey.whiteUp);
 	gotoxy(40, 6);
-	printf("백기↓ : %c", inputKey.whiteDown);   // 기본 화면 UI 출력
-
-	gotoxy(22, 10);
+	printf("백기↓ : %c", inputKey.whiteDown);   
 	textcolor(FONT_YELLOW);
+	gotoxy(15, 4); printf("아무것도 안하기 : SPACEBAR");
+	// 기본 화면 UI 출력
+	gotoxy(22, 10);
 	printf("%s ", stageStatus._blueOrWhite[0]);
 	textcolor(FONT_WHITE);
 	printf("%s ", stageStatus._frontQuestion[0]);
@@ -360,7 +354,7 @@ int choiceMenu()
 			}
 			else return NOTHING;
 		}
-		else if (move == SPACEBAR)
+		else if (move == ENTER)
 		{
 			move = getKey(); // 뒤에 0바이트는 버린다.
 			return menuNumber;
@@ -417,7 +411,7 @@ void moveFlag(int flagSwitch)
 {
 	if (flagSwitch == inputKey.blueUp) // 청기 올리는 것 도트 찍기 청기 내릴때 올리는 건 blank로 다시출력.
 	{
-		textcolor(FONT_BLUE);
+		textcolor(FONT_CYAN);
 		gotoxy(11, 26); printBlank(1); gotoxy(10, 25); printBlank(3);
 		gotoxy(9, 24); printBlank(5); gotoxy(8, 23); printBlank(7); gotoxy(8, 22); printBlank(12); // 기존청기 지우기
 
@@ -452,7 +446,7 @@ void moveFlag(int flagSwitch)
 		gotoxy(11, 26); printBlank(1); gotoxy(10, 25); printBlank(3);
 		gotoxy(9, 24); printBlank(5); gotoxy(8, 23); printBlank(7); gotoxy(8, 22); printBlank(12);//기존 청기 지우기
 
-		textcolor(FONT_BLUE);
+		textcolor(FONT_CYAN);
 		for (int i = 22; i > 13; i--) { gotoxy(20, i); printBlank(1); }
 		for (int i = 14; i < 19; i++) { gotoxy(17, i); printBlank(3); }
 		for (int i = 15; i < 18; i++) { gotoxy(14, i); printBlank(3); }
