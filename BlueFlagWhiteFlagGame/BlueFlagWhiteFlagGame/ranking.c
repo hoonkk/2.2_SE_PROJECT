@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "console.h"
-#define BUFFER 1000
+#define BUFFER 2000
 void showRanking()
 {
 	char buffer[BUFFER] = "";
@@ -27,11 +27,19 @@ void showRanking()
 	}
 	else
 	{
-		gotoxy(5, 2); printf("NAME  TIME");
+		textcolor(FONT_YELLOW);
+		gotoxy(22, 1); printf("< R  A  N  K  I  N  G >");
+		gotoxy(22, 4); printf("RANK");
+		gotoxy(30, 4); printf("NAME");
+		gotoxy(38, 4); printf("TIME(초)");
 		fgets(buffer, BUFFER, fp);
 		char *dataToken = strtok(buffer, "^");
 		while (dataToken != NULL)
 		{
+			if (rankingIndex == 51) // 데이터가 50개를 넘은 경우 더이상 받지 않음.
+			{
+				break;
+			}
 			eachData[rankingIndex] = dataToken;
 			strcpy(eachData[rankingIndex], dataToken);
 			dataToken = strtok(NULL, "^");
@@ -57,15 +65,17 @@ void showRanking()
 				}
 			}
 		} // 각 데이터들의 순위를 매기는 알고리즘
-		gotoxy(26, 30);printf("TOTAL DATA 수 : %d/100", rankingIndex);
+		textcolor(FONT_GRAY);
+		gotoxy(49, 30);printf("TOTAL DATA: %d/50", rankingIndex);
 
 
 		for (int i = 0; i < rankingIndex; i++) // 모든 데이터를 검사하되
 		{
 			if (recordData[i].rank <= 20) // 20위까지만 출력하게 함(데이터가 20개 아래인 경우 자연스럽게 개수에 맞춰 출력됨)
 			{
-				gotoxy(8, 3 + recordData[i].rank); printf("%d", recordData[i].rank);
-				printf(" %s   %.2f", recordData[i].name, recordData[i].playTime);
+				textcolor(FONT_GRAY); gotoxy(22, 5 + recordData[i].rank); printf("%2d위  ", recordData[i].rank);
+				textcolor(FONT_WHITE); gotoxy(30, 5 + recordData[i].rank); printf("%s", recordData[i].name);
+				textcolor(FONT_CYAN);gotoxy(38, 5 + recordData[i].rank); printf("%0.2f", recordData[i].playTime);
 			}
 		}
 

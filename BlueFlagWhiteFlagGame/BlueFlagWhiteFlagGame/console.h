@@ -17,16 +17,22 @@ void textcolor(int color_number);
 void initialShow();
 void updateShow();
 void printCharactor(int emotion);
+
 void printDot(int number);
+void printDot_(int number);
 void printBlank(int num);
+
 void moveFlag(int flagSwitch);
 void clearFlag();
 void settingWarning();
 void printKeyboard();
 
+void printTheme();
 void gameIntro();
 void printMenu();
 int choiceMenu();
+void menuSlide();
+void initialScreen();
 
 void pause();
 
@@ -60,11 +66,13 @@ struct _stageStatus {
 #define SPACEBAR 32
 
 #define FONT_BLUE 1
+#define FONT_GREEN 2
+#define FONT_CYAN 3
 #define FONT_RED 4
+#define FONT_PURPLE 5
 #define FONT_YELLOW 6
 #define FONT_WHITE 7
-#define FONT_CYAN 3
-#define CYAN 11
+#define FONT_GRAY 8
 
 #define __CONSOLE_H__
 

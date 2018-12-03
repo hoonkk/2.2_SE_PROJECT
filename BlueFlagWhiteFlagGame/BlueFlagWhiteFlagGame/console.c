@@ -64,6 +64,12 @@ void printDot(int number)
 		printf("*");
 }
 
+void printDot_(int number)
+{
+	for (int i = 0; i < number;i++)
+		printf("#");
+}
+
 void printBlank(int num)
 {
 	for (int i = 0; i < num;i++)
@@ -169,7 +175,7 @@ void userKeySetting()
 		gotoxy(20, 15); printf("K  E  Y  S  E  T  T  I  N  G"); Sleep(WAIT + 50);
 	}
 	system("cls");
-	printKeyboard(); Sleep(1000);
+	printKeyboard();
 	while (1)
 	{
 		textcolor(FONT_WHITE);
@@ -310,6 +316,56 @@ void updateShow()
 	printf("%s ", stageStatus._backQuestion[0]); // 문제 출력
 }
 
+void printTheme()
+{
+	textcolor(FONT_CYAN);
+	gotoxy(7, 1); printDot_(2); gotoxy(7, 2); printDot_(2); 
+	gotoxy(3, 3); printDot_(11); 
+	gotoxy(6, 4); printDot_(4); gotoxy(13, 4); printDot_(3);
+	gotoxy(4, 5); printDot_(3); gotoxy(9, 5); printDot_(3);
+	gotoxy(3, 6); printDot_(3); gotoxy(10, 6); printDot_(3);
+	gotoxy(3, 7); printDot_(2); gotoxy(11, 7); printDot_(2);
+	for (int i = 1; i < 9;i++){ gotoxy(16, i); printDot_(2); }
+	gotoxy(8, 9); printDot_(8); gotoxy(8, 12); printDot_(8);
+	gotoxy(7, 10); printDot_(2); gotoxy(15, 10); printDot_(2);
+	gotoxy(7, 11); printDot_(2); gotoxy(15, 11); printDot_(2); // '청'
+
+	gotoxy(21, 2); printDot_(7); gotoxy(26, 3); printDot_(2);
+	gotoxy(26, 4); printDot_(2); gotoxy(26, 5); printDot_(2);
+	for (int i = 1;i < 6;i++) { gotoxy(30, i); printDot_(2); } // '기'
+
+	textcolor(FONT_WHITE);
+	for (int i = 5; i < 12; i++){ gotoxy(46, i); printDot_(2); gotoxy(50, i); printDot_(2); }
+	gotoxy(48, 8); printDot_(2); gotoxy(42, 12); printDot_(8);
+	gotoxy(36, 6); printDot_(2); gotoxy(41, 6); printDot_(2);
+	gotoxy(36, 7); printDot_(2); gotoxy(41, 7); printDot_(2);
+	gotoxy(36, 8); printDot_(7); gotoxy(36, 10); printDot_(7);
+	gotoxy(36, 9); printDot_(2); gotoxy(41, 9); printDot_(2);
+	for (int i = 12; i < 16; i++) { gotoxy(48, i); printDot_(2); } // '백'
+
+	gotoxy(55, 5); printDot_(7); gotoxy(60, 6); printDot_(2);
+	gotoxy(60, 7); printDot_(2); gotoxy(60, 8); printDot_(2);
+	for (int i = 4;i < 9;i++) { gotoxy(64, i); printDot_(2); } // '기'
+	textcolor(FONT_YELLOW); gotoxy(3, 18); printf("진행 ::: ENTER"); 
+	textcolor(FONT_CYAN);
+	gotoxy(28, 30); printf("MADE BY 김경훈(https://github.com/hoonkk)");
+	textcolor(FONT_WHITE);
+}
+void menuSlide()
+{
+	for (int i = 26; i > 20; i--)
+	{
+		gotoxy(25, i);     printf("1.G A M E S T A R T");
+		gotoxy(25, i + 1); printf("2.K E Y S E T T I N G");
+		gotoxy(25, i + 2); printf("3.R A N K I N G");
+		gotoxy(25, i + 3); printf("4.E X I T");
+		Sleep(50);
+		gotoxy(25, i);     printf("                   ");
+		gotoxy(25, i + 1); printf("                     ");
+		gotoxy(25, i + 2); printf("               ");
+		gotoxy(25, i + 3); printf("         ");
+	}
+}
 void printMenu()
 {
 	textcolor(FONT_WHITE);
@@ -362,6 +418,12 @@ int choiceMenu()
 		else return NOTHING;
 }
 
+void initialScreen()
+{
+	printTheme();
+	menuSlide();
+	printMenu();
+}
 
 void printCharactor(int emotion)
 {

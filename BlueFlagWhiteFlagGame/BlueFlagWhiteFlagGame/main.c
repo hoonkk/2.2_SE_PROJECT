@@ -15,9 +15,10 @@ void main()
 
 	int firstSet = 0; // 초기 키 설정을 안하고 게임으로 넘어가는 것을 막기위한 변수 선언
 	int menu = 0;
-	
+	initialScreen();
 	while (1) // 기본 메뉴 출력
 	{
+		printTheme();
 		printMenu();
 		menu = choiceMenu(); 
 		printMenu();
