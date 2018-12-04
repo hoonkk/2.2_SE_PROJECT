@@ -95,17 +95,20 @@ void gameStart()
 		{
 			gotoxy(28, 12); printf("G  O  O  D  ♬  ");
 			printCharactor(HAPPY);
+			playSound(GOOD);
 		}// 정답인경우
 		else
 		{
 			gotoxy(28, 12); printf("M  I  S  S !   "); // 오답인경우
 			printCharactor(SAD);
+			playSound(MISS);
 			stageStatus.life--;
 		}
 		if (stageStatus.life == 0) // 게임오버
 		{
 			pause();
 			system("cls");
+			playSound(GAMEOVER);
 			textcolor(FONT_RED);
 			for (int i = 0; i < 5; i++) // 깜빡이는 효과
 			{
@@ -127,11 +130,13 @@ void gameStart()
 			char a[FILE_BUFFER] = "";
 			pause();
 			system("cls"); 
+			playSound(CLEAR);
 			printCharactor(HAPPY);
 			for (int i = 0; i < 5; i++) // 깜빡이는 효과
 			{
 				gotoxy(25, 10); printf("                   "); Sleep(100);
 				gotoxy(25, 10); printf("C  L  E  A  R  !  !"); Sleep(100);
+				
 				gotoxy(25, 12); for (int a = 0; a <= i; a++) printf("★  ");
 				gotoxy(25, 8); for (int a = 0; a <= i; a++) printf("★  ");
 				Sleep(100);

@@ -1,14 +1,38 @@
 #include <Windows.h>
 #include <stdio.h>
 #include <conio.h>
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
+
+
 
 #include "console.h"
 
 
 
 #define WAIT 50
+#define ENTER 13
 
 #define NOTHING 0
+
+
+#define BEEP 0
+#define MENUMOVE 2
+#define GAMESTART 3
+#define SWING 4
+#define KeySetComplete 7
+
+
+#define BEEPSOUND "sound\\CursorBeep.wav"
+#define MISSSOUND "sound\\MISS.wav"
+#define MENUMOVESOUND "sound\\MenuMove.wav"
+#define GAMESTARTSOUND "sound\\GameStart.wav"
+#define SWINGSOUND "sound\\Swing.wav"
+#define GAMEOVERSOUND "sound\\GameOver.wav"
+#define GOODSOUND "sound\\GOOD.wav"
+#define KeySetCompleteSound "sound\\KeySetComplete.wav"
+#define CLEARSOUND "sound\\CLEAR.wav"
+
 
 
 
@@ -22,11 +46,33 @@ void pause()
 		if (check == ENTER)
 		{
 			getKey();
+			playSound(BEEP);
 			break;
 		}
 	}
 }
 
+void playSound(int soundIndex)
+{
+	if(soundIndex==BEEP)
+		PlaySound(TEXT(BEEPSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if(soundIndex==MISS)
+		PlaySound(TEXT(MISSSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if(soundIndex==MENUMOVE)
+		PlaySound(TEXT(MENUMOVESOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if(soundIndex==GAMESTART)
+		PlaySound(TEXT(GAMESTARTSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if(soundIndex==SWING)
+		PlaySound(TEXT(SWINGSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if (soundIndex == GAMEOVER)
+		PlaySound(TEXT(GAMEOVERSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if(soundIndex==GOOD)
+		PlaySound(TEXT(GOODSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if (soundIndex == KeySetComplete)
+		PlaySound(TEXT(KeySetCompleteSound), NULL, SND_FILENAME | SND_ASYNC | 0);
+	if (soundIndex == CLEAR)
+		PlaySound(TEXT(CLEARSOUND), NULL, SND_FILENAME | SND_ASYNC | 0);
+}
 void gotoxy(int x, int y)
 {
 	COORD Pos = { x , y };
@@ -151,6 +197,7 @@ void gameIntro()
 {
 	textcolor(FONT_CYAN);
 	gotoxy(23, 15);
+	playSound(GAMESTART);
 	printf("G  "); Sleep(WAIT); printf("A  "); Sleep(WAIT); printf("M  "); Sleep(WAIT);
 	printf("E  "); Sleep(WAIT); printf("S  "); Sleep(WAIT); printf("T  "); Sleep(WAIT);
 	printf("A  "); Sleep(WAIT); printf("R  "); Sleep(WAIT); printf("T  "); Sleep(WAIT);
@@ -165,12 +212,14 @@ void userKeySetting()
 {
 	textcolor(FONT_CYAN);
 	gotoxy(20, 15);
+	playSound(KeySetComplete);
 	printf("K  "); Sleep(WAIT); printf("E  "); Sleep(WAIT); printf("Y  "); Sleep(WAIT);
 	printf("S  "); Sleep(WAIT); printf("E  "); Sleep(WAIT); printf("T  "); Sleep(WAIT);
 	printf("T  "); Sleep(WAIT); printf("I  "); Sleep(WAIT); printf("N  "); Sleep(WAIT);
 	printf("G  "); Sleep(WAIT);
 	for (int i = 0; i < 5; i++) // 깜빡이는 효과
 	{
+	
 		gotoxy(20, 15); printf("                            "); Sleep(WAIT + 50);
 		gotoxy(20, 15); printf("K  E  Y  S  E  T  T  I  N  G"); Sleep(WAIT + 50);
 	}
@@ -257,6 +306,7 @@ void userKeySetting()
 	textcolor(FONT_CYAN);
 	for (int i = 0; i < 5; i++) // 깜빡이는 효과
 	{
+		playSound(KeySetComplete);
 		gotoxy(20, 15); printf("K  E  Y  S  E  T  T  I  N  G"); 
 		gotoxy(20, 17); printf("C  O  M  P  L  E  T  E  !  !"); Sleep(WAIT + 150);
 		gotoxy(20, 15); printf("                            "); 
@@ -395,6 +445,7 @@ int choiceMenu()
 				if (menuNumber>1)
 				{
 					menuNumber--;
+					playSound(MENUMOVE);
 					return NOTHING;
 				}
 				else return NOTHING;
@@ -404,6 +455,7 @@ int choiceMenu()
 				if (menuNumber < 4)
 				{
 					menuNumber++;
+					playSound(MENUMOVE);
 					return NOTHING;
 				}
 				else return NOTHING;
@@ -413,6 +465,7 @@ int choiceMenu()
 		else if (move == ENTER)
 		{
 			move = getKey(); // 뒤에 0바이트는 버린다.
+			playSound(BEEP);
 			return menuNumber;
 		}
 		else return NOTHING;
@@ -471,6 +524,7 @@ void printCharactor(int emotion)
 
 void moveFlag(int flagSwitch)
 {
+	playSound(SWING);
 	if (flagSwitch == inputKey.blueUp) // 청기 올리는 것 도트 찍기 청기 내릴때 올리는 건 blank로 다시출력.
 	{
 		textcolor(FONT_CYAN);

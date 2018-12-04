@@ -1,12 +1,15 @@
 #ifndef __CONSOLE_H__
 #include <stdbool.h>
 
+
 typedef enum { NOCURSOR, SOLIDCURSOR, NORMALCURSOR } CURSOR_TYPE;
 
 
 int getKey();
 
 int keySetting();
+
+void playSound(int soundIndex);
 
 void userKeySetting();
 
@@ -64,6 +67,11 @@ struct _stageStatus {
 
 #define ENTER 13
 #define SPACEBAR 32
+
+#define MISS 1
+#define GAMEOVER 5
+#define GOOD 6
+#define CLEAR 8
 
 #define FONT_BLUE 1
 #define FONT_GREEN 2
